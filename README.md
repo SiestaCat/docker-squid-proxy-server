@@ -35,7 +35,7 @@ docker run --rm -it -p 30128:3128 \
 To build the Docker image locally, use the following command:
 
 ```bash
-docker build -t siestacat/squid-proxy-server .
+docker build -t siestacat/squid-proxy-server:latest .
 ```
 
 ## Docker Compose Example
