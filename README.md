@@ -16,7 +16,7 @@ You can start the Squid proxy server using Docker with the following commands:
 docker run -d -p 30128:3128 \
   -e SQUID_USER=user \
   -e SQUID_PASSWORD=password \
-  -e NETWORK_INTERFACE=tun0 \ # Optional
+  -e NETWORK_INTERFACE=tun0 \ # Optional - tcp_outgoing_address
   siestacat/squid-proxy-server
 ```
 
@@ -26,7 +26,7 @@ docker run -d -p 30128:3128 \
 docker run --rm -it -p 30128:3128 \
   -e SQUID_USER=user \
   -e SQUID_PASSWORD=password \
-  -e NETWORK_INTERFACE=tun0 \ # Optional
+  -e NETWORK_INTERFACE=tun0 \ # Optional - tcp_outgoing_address
   siestacat/squid-proxy-server
 ```
 
@@ -54,7 +54,7 @@ services:
     environment:
       - SQUID_USER=user
       - SQUID_PASSWORD=password
-      - NETWORK_INTERFACE=tun0 # Optional
+      - NETWORK_INTERFACE=tun0 # Optional - tcp_outgoing_address
     restart: unless-stopped
 ```
 

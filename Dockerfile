@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install Squid and Apache2-utils for htpasswd
-RUN apk add --no-cache squid apache2-utils
+RUN apk add --no-cache squid apache2-utils curl
 
 # Copy custom Squid configuration files into the container
 COPY squid.conf /etc/squid/squid.conf
