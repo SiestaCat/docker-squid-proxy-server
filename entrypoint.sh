@@ -7,12 +7,11 @@ chown squid:squid /squid-proxy/cache
 # Generate password file
 htpasswd -bc /etc/squid/passwd $SQUID_USER $SQUID_PASSWORD
 
-# Remove existing 'tcp_outgoing_address' lines to avoid duplicates
-sed -i '/^tcp_outgoing_address /d' /etc/squid/squid.conf
-
-# If NETWORK_INTERFACE is set, use it for outgoing connections
+# Configure the network interface
 if [ -n "$NETWORK_INTERFACE" ]; then
-    echo "tcp_outgoing_address $NETWORK_INTERFACE" >> /etc/squid/squid.conf
+    echo "http_port $NETWORK_INTERFACE:3128" >> /etc/squid/squid.conf
+else
+    echo "http_port 3128" >> /etc/squid/squid.conf
 fi
 
 # Start Squid in the foreground for better Docker integration
